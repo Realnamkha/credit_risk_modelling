@@ -18,13 +18,14 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, classification_report, precision_recall_fscore_support
 import warnings
 import os
+import time
 
 
 
 
 # Load the dataset
-a1 = pd.read_excel("/Users/namkha/Desktop/credit risk modelling/case_study1.xlsx")
-a2 = pd.read_excel("/Users/namkha/Desktop/credit risk modelling/case_study2.xlsx")
+a1 = pd.read_excel("case_study1.xlsx")
+a2 = pd.read_excel("case_study2.xlsx")
 
 
 
@@ -331,6 +332,11 @@ for i, v in enumerate(['p1', 'p2', 'p3', 'p4']):
     print(f"F1 Score: {f1_score[i]}")
     print()
 
+import pickle
+filename = 'model.sav'
+pickle.dump(xgb_classifier, open(filename,'wb'))
 
+
+load_model = pickle.load(open(filename,'rb'))
 
 
